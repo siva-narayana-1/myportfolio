@@ -27,14 +27,13 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-xl border-b border-white/10 py-4 shadow-2xl" : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-xl border-b border-white/10 py-4 shadow-2xl" : "bg-transparent py-6"
+        }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         <Link href="/">
           <span className="text-2xl font-bold gradient-text tracking-tighter cursor-pointer">
-            Siva.AI
+            My Portfolio
           </span>
         </Link>
 
@@ -42,7 +41,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <Link key={link.name} href={link.href}>
-              <span 
+              <span
                 className="text-sm font-medium text-foreground/80 hover:text-primary-cyan transition-colors cursor-pointer"
                 {...(link.href.endsWith('.pdf') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
@@ -76,7 +75,7 @@ export default function Navbar() {
         >
           {navLinks.map((link) => (
             <Link key={link.name} href={link.href} onClick={() => setIsOpen(false)}>
-              <span 
+              <span
                 className="text-lg font-medium text-foreground/80 hover:text-primary-cyan transition-colors"
                 {...(link.href.endsWith('.pdf') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >

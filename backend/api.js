@@ -41,10 +41,12 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
+      "http://localhost:3004",
       "http://localhost:3000",
       "http://localhost:3001",
+      "http://127.0.0.1:3004",
       "http://127.0.0.1:3000",
-      process.env.FRONTEND_URL || "http://localhost:3000",
+      process.env.FRONTEND_URL || "http://localhost:3004",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],

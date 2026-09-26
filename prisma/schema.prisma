@@ -1,0 +1,143 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Profile {
+  id            String @id @default(cuid())
+  name          String
+  email         String
+  phone         String?
+  title         String
+  bio           String @db.Text
+  profileImage  String?
+  resumeUrl     String?
+  location      String?
+
+  socialLinks   Json? // {github, linkedin, twitter, portfolio}
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id        String @id @default(cuid())
+  category  String // Backend, Frontend, ML, DevOps, Tools, etc.
+  name      String
+  level     String? // Expert, Intermediate, Beginner
+  icon      String? // icon name or URL
+  order     Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([category, name])
+}
+
+model Project {
+  id          String @id @default(cuid())
+  title       String
+  description String @db.Text
+  image       String?
+  techStack   String[] // JSON array
+  link        String?
+  github      String?
+  metrics     String? // e.g., "40% improvement"
+  order       Int @default(0)
+  featured    Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Experience {
+  id          String @id @default(cuid())
+  company     String
+  position    String
+  description String @db.Text
+  startDate   DateTime
+  endDate     DateTime?
+  location    String?
+  icon        String? // company icon or logo
+  order       Int @default(0)
+  current     Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id        String @id @default(cuid())
+  school    String
+  degree    String
+  field     String
+  startDate DateTime
+  endDate   DateTime?
+  details   String? @db.Text
+  order     Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id        String @id @default(cuid())
+  title     String
+  description String @db.Text
+  icon      String?
+  order     Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String @id @default(cuid())
+  name      String
+  role      String?
+  company   String?
+  message   String @db.Text
+  image     String?
+  order     Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String @db.Text
+  read      Boolean @default(false)
+
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id              String @id @default(cuid())
+  siteName        String
+  siteDescription String @db.Text
+  keywords        String?
+  siteUrl         String?
+  socialLinks     Json? // {github, linkedin, twitter}
+
+  updatedAt DateTime @updatedAt
+}

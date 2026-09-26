@@ -1,28 +1,45 @@
 {
-  "name": "protfolio",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:separate": "echo \"Run in two terminals: npm run dev:backend & npm run dev:frontend\"",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "setup": "node scripts/setup.js",
+    "db:init": "node scripts/init-db.js",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.105.1",
+    "@prisma/client": "^5.8.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.1",
+    "express": "^5.2.1",
     "framer-motion": "^12.38.0",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^1.14.0",
     "next": "16.2.4",
+    "nodemailer": "^10.0.10",
+    "pg": "^8.23.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.5",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "prisma": "^5.8.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

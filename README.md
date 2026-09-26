@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎯 Professional Portfolio System
 
-## Getting Started
+A full-stack, production-ready portfolio application with a beautiful website, powerful admin dashboard, and PostgreSQL database backend.
 
-First, run the development server:
+## ✨ Features
+
+- **Beautiful Portfolio Website** - Modern, responsive design with smooth animations
+- **Admin Dashboard** - Manage all portfolio content with ease
+- **Separate Frontend & Backend** - Clean architecture for scalability
+- **PostgreSQL Database** - Reliable data persistence with 8 tables
+- **JWT Authentication** - Secure admin access
+- **CORS Enabled** - Cross-origin request support
+- **Production Ready** - Optimized for deployment
+
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Initialize database
+npm run db:init
+
+# Start development servers
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
+- **Website**: http://localhost:3000
+- **Admin**: http://localhost:3000/admin/login
+- **API**: http://localhost:5000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Login with:**
+```
+Email:    admin@portfolio.com
+Password: admin123
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+portfolio/
+├── frontend/               React + Next.js (Port 3000)
+│   ├── src/              React code & components
+│   ├── public/           Static assets
+│   └── package.json
+├── backend/              Express API (Port 5000)
+│   ├── api.js            API routes & logic
+│   └── package.json
+├── prisma/               Database schema
+├── scripts/              Setup utilities
+├── .env.local            Configuration
+└── package.json          Root coordinator
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔌 Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+Frontend (3000) ←CORS→ Backend (5000) ←→ PostgreSQL Database
+  React            Express             44.222.126.134:1235
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📋 Available Commands
 
-## Deploy on Vercel
+```bash
+npm run dev              # Start both servers
+npm run dev:frontend     # Frontend only (port 3000)
+npm run dev:backend      # Backend only (port 5000)
+npm run db:init          # Initialize database
+npm run build            # Build for production
+npm run start            # Start production build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 Admin Dashboard
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Manage your portfolio content:
+- **Profile** - Your bio, photo, social links
+- **Projects** - Add your work with images and tech stack
+- **Skills** - Organize by category
+- **Experience** - Work history and achievements
+- **Education** - Degrees and certifications
+- **Messages** - Contact form submissions
+- **Settings** - Site configuration
+
+## 🗄️ Database
+
+**PostgreSQL Configuration:**
+- Host: `44.222.126.134`
+- Port: `1235`
+- Database: `portfolio_db`
+- User: `i_track`
+
+**Tables:** Admin, Profile, Project, Skill, Experience, Education, ContactMessage, SiteSettings
+
+## 🔐 Security
+
+Before deployment:
+1. Change `JWT_SECRET` in `.env.local`
+2. Change admin credentials
+3. Update `NEXT_PUBLIC_API_URL` to production domain
+4. Set `NODE_ENV=production`
+
+## 📚 Documentation
+
+- **START_HERE.md** - Quick start guide
+- **QUICK_REF.md** - Quick command reference
+- **AGENTS.md** - Project instructions
+- **CLAUDE.md** - Development notes
+
+## 🎨 Customization
+
+- **Colors**: Edit `frontend/src/globals.css`
+- **Layout**: Modify components in `frontend/src/components/`
+- **Branding**: Update in admin dashboard
+
+## 🚢 Deployment
+
+### Frontend (Vercel)
+```bash
+cd frontend
+npm run build
+vercel deploy
+```
+
+### Backend (Heroku/Railway)
+Set environment variables and deploy:
+```
+DATABASE_URL=postgresql://...
+JWT_SECRET=your-secret-key
+```
+
+## 🆘 Troubleshooting
+
+- **Backend won't start**: Check if port 5000 is in use
+- **Can't connect to DB**: Verify DATABASE_URL in .env.local
+- **Admin login fails**: Ensure backend is running, check console errors
+
+## 📝 License
+
+Open source and available under MIT License.
+
+---
+
+**Read START_HERE.md for detailed instructions. Your portfolio is ready to build!** 🎉
